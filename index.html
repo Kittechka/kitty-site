@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>kittyzayka | Profile</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+
+html,body{
+margin:0;
+padding:0;
+width:100%;
+height:100%;
+overflow:hidden;
+font-family:'Poppins',sans-serif;
+color:white;
+}
+
+/* ОСНОВНОЙ КОСМИЧЕСКИЙ ФОН */
+
+body{
+
+background:
+radial-gradient(circle at 25% 30%, rgba(0,120,255,0.14), transparent 45%),
+radial-gradient(circle at 75% 70%, rgba(255,0,170,0.14), transparent 45%),
+radial-gradient(circle at 50% 10%, rgba(0,80,255,0.10), transparent 45%),
+linear-gradient(140deg,#000000,#000000,#01020a,#020012);
+
+background-size:200% 200%;
+
+animation:spaceMove 25s infinite alternate ease-in-out;
+
+}
+
+/* движение космоса */
+
+@keyframes spaceMove{
+
+0%{background-position:0% 0%;}
+50%{background-position:50% 40%;}
+100%{background-position:100% 60%;}
+
+}
+
+/* частицы */
+
+#particles-js{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+}
+
+/* контейнер */
+
+.main-container{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+/* карточка */
+
+.card{
+
+backdrop-filter:blur(18px);
+background:rgba(255,255,255,0.05);
+
+border-radius:20px;
+
+padding:40px 60px;
+
+box-shadow:
+0 0 40px rgba(0,0,0,0.6),
+inset 0 0 20px rgba(255,255,255,0.05);
+
+text-align:center;
+
+}
+
+/* аватар */
+
+.avatar-wrapper{
+position:relative;
+display:inline-block;
+}
+
+.avatar{
+
+width:140px;
+height:140px;
+
+border-radius:50%;
+border:3px solid white;
+
+object-fit:cover;
+
+box-shadow:
+0 0 30px rgba(0,150,255,0.6),
+0 0 50px rgba(255,0,150,0.4);
+
+}
+
+.status-dot{
+
+position:absolute;
+bottom:10px;
+right:10px;
+
+width:20px;
+height:20px;
+
+border-radius:50%;
+border:3px solid #111;
+
+background:#777;
+
+}
+
+/* имя */
+
+h1{
+font-size:3rem;
+margin:15px 0;
+}
+
+.divider{
+width:70px;
+height:4px;
+background:white;
+margin:20px auto;
+}
+
+/* текст */
+
+.small{
+opacity:0.8;
+font-size:0.9rem;
+margin:6px 0;
+}
+
+/* соцсети */
+
+.social-links{
+display:flex;
+justify-content:center;
+gap:25px;
+margin-top:15px;
+}
+
+.social-links a{
+font-size:1.8rem;
+color:white;
+transition:0.3s;
+}
+
+.social-links a:hover{
+
+transform:translateY(-6px) scale(1.3);
+
+filter:
+drop-shadow(0 0 10px white)
+drop-shadow(0 0 20px rgba(0,120,255,0.7))
+drop-shadow(0 0 20px rgba(255,0,140,0.7));
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="particles-js"></div>
+
+<div class="main-container">
+
+<div class="card">
+
+<div class="avatar-wrapper">
+<img src="avatar.JPG" class="avatar">
+<div class="status-dot" id="statusDot"></div>
+</div>
+
+<h1>kittyzayka</h1>
+
+<div class="divider"></div>
+
+<div class="small" id="clock"></div>
+
+<div class="small">
+🎮 Favorite game: Resident Evil
+</div>
+
+<div class="small" id="visits"></div>
+
+<div class="social-links">
+
+<a href="https://t.me/KITTY_VOR" target="_blank"><i class="fab fa-telegram"></i></a>
+<a href="https://www.youtube.com/@kittyzayka" target="_blank"><i class="fab fa-youtube"></i></a>
+<a href="https://github.com/Kittechka" target="_blank"><i class="fab fa-github"></i></a>
+<a href="https://www.tiktok.com/@kittyyzaykaa" target="_blank"><i class="fab fa-tiktok"></i></a>
+<a href="https://steamcommunity.com/id/kittyzayka/" target="_blank"><i class="fab fa-steam"></i></a>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+<script>
+
+particlesJS("particles-js",{
+
+particles:{
+
+number:{value:90,density:{enable:true,value_area:800}},
+
+color:{value:"#ffffff"},
+
+shape:{type:"circle"},
+
+opacity:{value:0.5,random:true},
+
+size:{value:2,random:true},
+
+line_linked:{enable:false},
+
+move:{enable:true,speed:0.6}
+
+}
+
+})
+
+function updateClock(){
+
+let now=new Date()
+
+let utc=now.getTime()+now.getTimezoneOffset()*60000
+let novosibirsk=new Date(utc+7*3600000)
+
+let h=String(novosibirsk.getHours()).padStart(2,"0")
+let m=String(novosibirsk.getMinutes()).padStart(2,"0")
+let s=String(novosibirsk.getSeconds()).padStart(2,"0")
+
+document.getElementById("clock").innerText="Novosibirsk time: "+h+":"+m+":"+s
+
+}
+
+setInterval(updateClock,1000)
+updateClock()
+
+let visits=localStorage.getItem("visits")
+visits=visits?parseInt(visits)+1:1
+localStorage.setItem("visits",visits)
+
+document.getElementById("visits").innerText="Visitors: "+visits
+
+async function getDiscord(){
+
+try{
+
+let r=await fetch("https://api.lanyard.rest/v1/users/780407210270261318")
+let d=await r.json()
+
+let status=d.data.discord_status
+
+let color="#777"
+
+if(status==="online")color="#43b581"
+if(status==="idle")color="#faa61a"
+if(status==="dnd")color="#f04747"
+
+document.getElementById("statusDot").style.background=color
+
+}catch{}
+
+}
+
+setInterval(getDiscord,15000)
+getDiscord()
+
+</script>
+
+</body>
+</html>
