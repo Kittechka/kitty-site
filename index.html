@@ -266,11 +266,6 @@ function updateClock() {
 setInterval(updateClock, 1000);
 updateClock();
 
-let visits = localStorage.getItem("visits");
-visits = visits ? parseInt(visits) + 1 : 1;
-localStorage.setItem("visits", visits);
-document.getElementById("visits").innerText = "Visitors: " + visits;
-
 async function getDiscord() {
     try {
         let r = await fetch("https://api.lanyard.rest/v1/users/780407210270261318");
